@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniBite</title>
+    <link rel="icon" type="image/png" href="image_21e4cf.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="home-page">
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="unibite.png" alt="UniBite Logo">
+            <span class="logo-3d">UniBite</span>
+        </a>
+        
+        <div class="top-right">
+            <a href="index.html" class="nav-link">Αρχική</a>
+            <a href="about.html" class="nav-link">Σχετικά</a>
+            <a href="how-it-works.html" class="nav-link">Πώς Λειτουργεί</a>
+            <a href="login.html" class="btn-outline">Σύνδεση</a>
+            
+            <div class="lang-dropdown" id="langDropdown">
+                <div class="selected">Ελληνικά <i class="fa-solid fa-chevron-down"></i></div>
+                <div class="options">
+                    <div class="option" data-lang="el">Ελληνικά</div>
+                    <div class="option" data-lang="en">English</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container-hero">
+            <div class="hero-text">
+                <h1>Σταματάμε τη σπατάλη φαγητού, μία ανάρτηση τη φορά.</h1>
+                <p>Καλώς ήρθες στο UniBite. Την ψηφιακή πλατφόρμα της πανεπιστημιούπολης όπου το πλεονάζον φαγητό μοιράζεται άμεσα, μειώνοντας τη σπατάλη και ενισχύοντας τη φοιτητική κοινότητα.</p>
+                <a href="login.html" class="btn-magic-cta">Εξερεύνησε την Πλατφόρμα</a>
+            </div>
+            
+            <div class="hero-graphics-wrapper">
+                <div class="phone-fan-container">
+                    <div class="fan-phone phone-left">
+                        <img src="screen1.png" alt="Screen 1" onerror="this.style.backgroundColor='#555';">
+                    </div>
+                    <div class="fan-phone phone-center">
+                        <img src="screen2.png" alt="Screen 2" onerror="this.style.backgroundColor='#777';">
+                    </div>
+                    <div class="fan-phone phone-right">
+                        <img src="screen3.png" alt="Screen 3" onerror="this.style.backgroundColor='#999';">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+                <path fill="var(--magic-dark)" fill-opacity="1"
+d="M0,256L48,245.3C96,235,192,213,288,192C384,171,480,149,576,170.7C672,192,768,256,864,261.3C960,267,1056,213,1152,181.3C1248,149,1344,139,1392,133.3L1440,128L1440,320L0,320Z">                </path>
+            </svg>
+        </div>
+    </section>
+
+    <main class="main-content">
+        
+        <section class="section-box" id="about">
+            <h2 class="magic-title">Σχετικά με εμάς</h2>
+            <div class="about-layout">
+                <div class="about-text">
+                    <p>Το <strong>UniBite</strong> γεννήθηκε από την ανάγκη να λύσουμε ένα μεγάλο πρόβλημα των σύγχρονων πανεπιστημίων: τη σπατάλη εξαιρετικού φαγητού την ίδια στιγμή που πολλοί φοιτητές αναζητούν οικονομικές λύσεις σίτισης.</p>
+                    <p>Είμαστε μια open web πλατφόρμα που λειτουργεί ως γέφυρα αλληλεγγύης και οικολογικής συνείδησης, φέρνοντας κοντά τις συλλογικότητες, τα κυλικεία και τα μέλη της πανεπιστημιούπολης.</p>
+                </div>
+                <div class="about-visual">
+                    <i class="fa-solid fa-wand-magic-sparkles" style="font-size: 50px; color: #6c5ce7; margin-bottom: 15px;"></i>
+                    <h4>Ένας βιώσιμος ψηφιακός κόσμος</h4>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-top: 10px;">Μαζί δημιουργούμε μια πράσινη πανεπιστημιούπολη με μηδενικό αποτύπωμα τροφικής σπατάλης.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-box" id="how-it-works">
+            <h2 class="magic-title">Πώς Λειτουργεί</h2>
+            <div class="how-grid">
+                <div class="magic-card">
+                    <div class="card-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                    <h3>1. Ανάρτησε</h3>
+                    <p>Έμεινε περίσσευμα φαγητού από μια φοιτητική εκδήλωση ή το κυλικείο; Ανέβασέ το στην πλατφόρμα με μια φωτογραφία και τοποθεσία.</p>
+                </div>
+                <div class="magic-card">
+                    <div class="card-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <h3>2. Εντόπισε</h3>
+                    <p>Οι φοιτητές που βρίσκονται στο campus βλέπουν live τις διαθέσιμες μερίδες φαγητού γύρω τους μέσω του διαδραστικού χάρτη.</p>
+                </div>
+                <div class="magic-card">
+                    <div class="card-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h3>3. Παράλαβε</h3>
+                    <p>Συνεννοήσου γρήγορα, πήγαινε στο σημείο και παράλαβε το γεύμα σου δωρεάν, σώζοντας ταυτόχρονα τον πλανήτη.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="image_21e4cf.png" alt="UniBite Logo">
+                <p>Η έξυπνη web πλατφόρμα για τη μείωση της σπατάλης φαγητού στα ελληνικά πανεπιστήμια.</p>
+            </div>
+            
+            <div class="footer-contact">
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span><a href="mailto:support@unibite.gr">support@unibite.gr</a></span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span><a href="https://instagram.com/unibite" target="_blank">@unibite</a></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2026 UniBite – Πλατφόρμα φοιτητικής αλληλεγγύης. All Rights Reserved.
+            </div>
+            <div class="footer-legal-links">
+                <a href="terms.html">Όροι Χρήσης</a>
+                <a href="privacy.html">Πολιτική Απορρήτου</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dropdown Γλώσσας
+        const langDropdown = document.getElementById('langDropdown');
+        langDropdown.addEventListener('click', (e) => {
+            langDropdown.classList.toggle('open');
+            e.stopPropagation();
+        });
+
+        document.addEventListener('click', () => {
+            langDropdown.classList.remove('open');
+        });
+
+        document.querySelectorAll('.lang-dropdown .option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                const selectedLang = e.target.textContent;
+                document.querySelector('.lang-dropdown .selected').innerHTML = `${selectedLang} <i class="fa-solid fa-chevron-down"></i>`;
+            });
+        });
+    </script>
+</body>
+</html>

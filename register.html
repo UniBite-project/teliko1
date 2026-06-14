@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniBite</title>
+    <link rel="icon" type="image/png" href="logotransparent.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="logo.jpeg" alt="UniBite Logo">
+    </div>
+    <div class="top-right">
+        <div class="lang-dropdown" id="langDropdown">
+            <div class="selected">
+                <span>Ελληνικά</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="options">
+                <div class="option" data-lang="el">Ελληνικά</div>
+                <div class="option" data-lang="en">English</div>
+            </div>
+        </div>
+        <a href="register.html" class="nav-active">Εγγραφή</a>
+        <a href="login.html" class="btn-outline">Σύνδεση</a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="login-card register-card">
+        <h1>Δημιουργία νέου λογαριασμού</h1>
+        <p class="subtitle">Γίνε και ΕΣΥ μέλος του UniBite! Ανακάλυψε και δοκίμασε νόστιμα και διάφορα γεύματα από συμφοιτητές σου. Μην χάνεις την ευκαιρία! Μπες και εγγράψου ΤΩΡΑ!</p>
+
+        <form id="registerForm" novalidate>
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Όνομα</label>
+                    <div class="input-wrapper">
+                        <i class="fa fa-user"></i>
+                        <input type="text" id="firstname" placeholder="Χρήστος" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Επώνυμο</label>
+                    <div class="input-wrapper">
+                        <i class="fa fa-user"></i>
+                        <input type="text" id="lastname" placeholder="Ντρέλιας" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Email</label>
+                <div class="input-wrapper">
+                    <i class="fa fa-envelope"></i>
+                    <input type="email" id="email" placeholder="up1112136@ac.upatras.gr" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Αριθμός Μητρώου (ΑΜ)</label>
+                <div class="input-wrapper">
+                    <i class="fa fa-id-card"></i>
+                    <input type="text" id="studentId" placeholder="π.χ. 1112136" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Όνομα χρήστη</label>
+                <div class="input-wrapper">
+                    <i class="fa fa-user-circle"></i>
+                    <input type="text" id="username" placeholder="xristosdrelias" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Συνθηματικό</label>
+                <div class="input-wrapper">
+                    <i class="fa fa-key"></i>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                    <i class="fa fa-eye toggle-pass" id="togglePassword"></i>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Επιβεβαίωση Συνθηματικού</label>
+                <div class="input-wrapper">
+                    <i class="fa fa-key"></i>
+                    <input type="password" id="confirmPassword" placeholder="••••••••" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary" id="registerBtn">Δημιουργία Λογαριασμού</button>
+            <div class="error-message" id="errorMessage"></div>
+        </form>
+
+        <div class="terms">
+            Με την εγγραφή σου αποδέχεσαι τους <a href="#">Όρους Χρήσης</a> και την <a href="#">Πολιτική Απορρήτου</a>.
+        </div>
+
+        <div class="register-link">
+            Έχεις ήδη λογαριασμό; <a href="login.html">Συνδέσου εδώ</a>
+        </div>
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+<script src="js/register.js"></script>
+
+</body>
+</html>

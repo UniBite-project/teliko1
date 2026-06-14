@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unibite</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .points {
+            color: #D11A1A;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .card-number {
+            color: #1A1A1A;
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            margin-bottom: 25px;
+        }
+
+        .bonus-card {
+            width: 450px;
+            height: 280px;
+            aspect-ratio: 520 / 320;
+            background-color: #ffffff;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+            padding: 25px;
+            box-shadow: 0 24px 38px -12px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: default;
+            background-image: url('unibite.png');
+            background-repeat: no-repeat;
+            background-size: contain; 
+            background-position: center;
+        }
+
+        .bonus-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 28px 42px -14px rgba(0, 0, 0, 0.4);
+        }
+
+        .bonus-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 45%;
+            width: 100%;
+            height: 200%;
+            background: linear-gradient(to right, 
+                rgba(255, 255, 255, 0.8) 0%,
+                rgba(224, 242, 241, 0.6) 30%,
+                rgba(192, 192, 192, 0.4) 70%, 
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(25deg);
+            pointer-events: none;
+            z-index: 2;
+            filter: drop-shadow(0 0 8px rgba(230, 245, 255, 0.8));
+        }
+
+        .bonus-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 30%, rgba(255,255,210,0.1) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+            z-index: 1;
+            border-radius: 28px;
+        }
+
+        .card-mascot {
+            position: absolute;
+            bottom: 0px;
+            right: -25px;
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            opacity: 0.85;
+            z-index: 3;
+            pointer-events: none;
+        }        
+
+        .card-inner {
+            position: relative;
+            z-index: 5;
+            padding: 24px 28px 12px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 3;
+        }
+
+        .brand-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(2px);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            font-size: 34px;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo-icon img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Lobster', cursive;
+            font-size: 22px;
+            font-weight: 700;
+            color: #00032E;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            color: #1A1A1A;
+            margin-bottom: -35px;
+        }
+
+        .card-holder-info {
+            text-align: left;
+        }
+
+        .card-digits {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            margin-bottom: 6px;
+        }
+
+        .card-holder-name {
+            font-family: 'Cambria', serif;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        /* --- STYLES ΑΠΟ 2ο ΚΩΔΙΚΑ (ΙΣΤΟΡΙΚΟ ΣΥΝΑΛΛΑΓΩΝ) --- */
+        .loyalty-history {
+            width: 100%;
+            text-align: left;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 16px;
+            letter-spacing: -0.3px;
+        }
+
+        .transaction-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .transaction-box {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 18px 22px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .transaction-box:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+            transform: translateY(-1px);
+        }
+
+        .box-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .type {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .transaction-points {
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .transaction-points.positive { color: #16a34a; }
+        .transaction-points.negative { color: #dc2626; }
+
+        .box-details {
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), opacity 0.25s ease;
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .box-details hr {
+            border: 0;
+            border-top: 1px solid #f1f5f9;
+            margin: 12px 0;
+        }
+
+        .box-details p {
+            margin: 6px 0;
+        }
+
+        .transaction-box.open {
+            border-color: #1d63b8;
+            background-color: #f8fafc;
+            box-shadow: 0 4px 20px rgba(29, 99, 184, 0.06);
+        }
+
+        .transaction-box.open .box-details {
+            max-height: 1000px;
+            opacity: 1;
+            padding-top: 16px;
+            transition: max-height 0.4s cubic-bezier(1, 0, 1, 0), opacity 0.3s ease;
+        }
+
+        </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="points" id="loyaltyPoints"></div>
+        <div class="card-number">071456939 PERSONALIZED NOTE</div>
+
+        <div class="bonus-card">
+            <img src="mascot.png" alt="Bonus Logo" class="card-mascot">
+            <div class="card-inner">
+                <div class="card-header">
+                    <div class="brand-left">
+                        <div class="logo-icon"> <img src="apple.png" alt="Apple"> </div>
+                        <div class="logo-text">UniBite</div>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="card-holder-info">
+                        <div class="card-holder-name">ΧΡΗΣΤΟΣ ΚΟΛΙΑΣ</div>
+                        <div class="card-digits">•••• •••• 6939</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="loyalty-history">
+            <h2>Ιστορικό Συναλλαγών</h2>
+            
+            <div class="transaction-list">
+                
+                <div class="transaction-box" onclick="toggleDetails(this)">
+                    <div class="box-summary">
+                        <span class="type">Παραλαβή Μερίδας</span>
+                        <span class="transaction-points negative">-1 πόντος</span>
+                    </div>
+                    <div class="box-details">
+                        <p><strong>Τι παρήγγειλα:</strong> Παστίτσιο (1 μερίδα)</p>
+                        <p><strong>Μάγειρας:</strong> Γιώργος Π.</p>
+                        <p><strong>Ημερομηνία & Ώρα:</strong> 02/06/2026 - 14:30</p>
+                    </div>
+                </div>
+
+                <div class="transaction-box" onclick="toggleDetails(this)">
+                    <div class="box-summary">
+                        <span class="type">Ποινή Συστήματος</span>
+                        <span class="transaction-points negative">-1 πόντος</span>
+                    </div>
+                    <div class="box-details">
+                        <p><strong>Λόγος Ποινής:</strong> Δεν υποβλήθηκε κριτική/αξιολόγηση για τη μερίδα που παραλάβατε εντός της υποχρεωτικής διοίας των 48 ωρών.</p>
+                        <p><strong>Ημερομηνία:</strong> 31/05/2026</p>
+                    </div>
+                </div>
+
+                <div class="transaction-box" onclick="toggleDetails(this)">
+                    <div class="box-summary">
+                        <span class="type">Προσφορά (Πολλαπλές Μερίδες)</span>
+                        <span class="transaction-points positive">+3.5 πόντοι</span>
+                    </div>
+                    <div class="box-details">
+                        <p><strong>Φαγητό:</strong> Φασολάκια Κατσαρόλας</p>
+                        <p><strong>Διανομή:</strong> 2 μερίδες συνολικά σε διαφορετικούς φοιτητές</p>
+                        <hr>
+                        <p><strong>Κριτική 1 (Αλέξης):</strong> ⭐⭐⭐⭐ (4 αστέρια = +2.0 πόντοι)</p>
+                        <p><em>"Πολύ νόστιμο φαγητό, μεγάλο μπράβο!"</em></p>
+                        <hr>
+                        <p><strong>Κριτική 2 (Μαρία):</strong> ⭐⭐⭐ (3 αστέρια = +1.5 πόντοι)</p>
+                        <p><em>"Ήταν πολύ καλό, απλά λίγο παραπάνω λάδι."</em></p>
+                    </div>
+                </div>
+
+                <div class="transaction-box" onclick="toggleDetails(this)">
+                    <div class="box-summary">
+                        <span class="type">Προσφορά (Ίδιος Καταναλωτής)</span>
+                        <span class="transaction-points positive">+4 πόντοι</span>
+                    </div>
+                    <div class="box-details">
+                        <p><strong>Φαγητό:</strong> Μουσακάς</p>
+                        <p><strong>Καταναλωτής:</strong> Νίκος Κ.</p>
+                        <p><strong>Ποσότητα:</strong> 2 μερίδες στο ίδιο άτομο</p>
+                        <p><strong>Αξιολόγηση:</strong> ⭐⭐⭐⭐ (4 αστέρια = 2.0 πόντοι ανά μερίδα)</p>
+                        <p><strong>Πράξη Πόντων:</strong> 2 μερίδες × 2.0 πόντοι = +4.0 πόντοι</p>
+                        <p><strong>Σχόλιο:</strong> <em>"Εξαιρετικός μουσακάς, πήρα μια μερίδα και για τον συγκάτοικό μου!"</em></p>
+                    </div>
+                </div>
+
+                <div class="transaction-box" onclick="toggleDetails(this)">
+                    <div class="box-summary">
+                        <span class="type">Bonus Εγγραφής</span>
+                        <span class="transaction-points positive">+5 πόντοι</span>
+                    </div>
+                    <div class="box-details">
+                        <p>Καλωσήρθατε στην κοινότητα του UniBite! Σας κάνουμε δώρο τους πρώτους 5 πόντους για να μπορείτε να δεσμεύσετε τα πρώτα σας γεύματα.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDetails(element) {
+            document.querySelectorAll('.transaction-box').forEach(box => {
+                if (box !== element) {
+                    box.classList.remove('open');
+                }
+            });
+            element.classList.toggle('open');
+        }
+
+        function fetchLoyaltyData() {
+            fetch('api/loyalty.php')
+                .then(response => response.json())
+                .then(data => {
+                    // Ενημέρωση των πόντων και του ιστορικού συναλλαγών με τα δεδομένα από το API
+                    document.querySelector('.points').textContent = `${data.points} πόντοι`;
+                    // Εδώ θα μπορούσατε να προσθέσετε δυναμικά τις συναλλαγές στο ιστορικό
+                })
+                .catch(error => console.error('Error fetching loyalty data:', error));
+        }
+
+        // Κλήση της συνάρτησης για να φορτωθούν τα δεδομένα κατά την φόρτωση της σελίδας
+        window.onload = fetchLoyaltyData;
+
+
+
+        function getReasonTitle(reason) {
+            const titles = {
+                initial_bonus: "Bonus Εγγραφής",
+                meal_received: "Δέσμευση Μερίδας",
+                meal_shared: "Παροχή Μερίδας",
+                high_rating_bonus: "Bonus Υψηλής Αξιολόγησης",
+                no_pickup_penalty: "Μη Παραλαβή Μερίδας",
+                no_rating_penalty: "Μη Υποβολή Αξιολόγησης"
+            };
+            return titles[reason] || "Συναλλαγή";
+        }
+
+        function getPointsFromRating(stars) {
+            return stars >= 4 ? 2 : 1;
+        }
+
+        function ratingToPoints(stars) {
+
+            if (stars <= 3) return 1;
+            if (stars === 4) return 2;
+            if (stars === 5) return 3;
+
+            return 0;
+        }
+
+        function calculateTransactionPoints(t) {
+
+            switch (t.type) {
+
+                case "bonus_registration":
+                    return 5;
+
+                case "penalty_not_received":
+                    return -1;
+
+                case "penalty_not_reviewed":
+                    return -1;
+
+                case "sale_single_consumer":
+                    return ratingToPoints(t.stars) * t.portions;
+
+                case "sale_multiple_consumers":
+
+                    return t.consumers.reduce((sum, c) => {
+                        return sum + ratingToPoints(c.stars);
+                    }, 0);
+
+                default:
+                    return 0;
+            }
+        }
+
+        function calculateTotalPoints(transactions) {
+
+            return transactions.reduce((sum, t) => {
+                return sum + calculateTransactionPoints(t);
+            }, 0);
+        }
+
+        function refreshUI(transactions) {
+
+            // 1. update card
+            const total = calculateTotalPoints(transactions);
+
+            document.getElementById("totalPoints")
+                .textContent = `${total} πόντοι`;
+
+            // 2. render history
+            renderHistory(transactions);
+        }
+
+function renderHistory(transactions) {
+
+    const container =
+        document.getElementById("transactionList");
+
+    container.innerHTML = "";
+
+    transactions.forEach(t => {
+
+        const points =
+            calculateTransactionPoints(t);
+
+        const el = document.createElement("div");
+
+        el.className = "transaction-box";
+
+        el.innerHTML = `
+            <div class="box-summary">
+
+                <span class="type">
+                    ${t.title || t.type}
+                </span>
+
+                <span class="
+                    transaction-points
+                    ${points >= 0 ? "positive" : "negative"}
+                ">
+                    ${points > 0 ? "+" : ""}${points} πόντοι
+                </span>
+
+            </div>
+
+            <div class="box-details">
+                ${renderDetails(t)}
+            </div>
+        `;
+
+        el.addEventListener("click", () => {
+            el.classList.toggle("open");
+        });
+
+        container.appendChild(el);
+    });
+}
+
+function renderDetails(t) {
+
+    if (t.type === "bonus_registration") {
+        return `<p>Bonus εγγραφής UniBite</p>`;
+    }
+
+    if (t.type.includes("penalty")) {
+        return `<p>${t.reason}</p>`;
+    }
+
+    if (t.type === "sale_single_consumer") {
+        return `
+            <p>Φαγητό: ${t.food}</p>
+            <p>Μερίδες: ${t.portions}</p>
+            <p>Αστέρια: ${t.stars}</p>
+        `;
+    }
+
+    if (t.type === "sale_multiple_consumers") {
+
+        return `
+            <p>Φαγητό: ${t.food}</p>
+            ${t.consumers.map(c =>
+                `<p>${c.name}: ${c.stars}★</p>`
+            ).join("")}
+        `;
+    }
+
+    return "";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    refreshUI(transactions);
+});
+
+        function updatePoints() {
+            const total = transactions.reduce(
+                (sum, transaction) => sum + transaction.points,
+                0
+            );
+            document.getElementById("totalPoints")
+                .textContent = `${total} πόντοι`;
+        }
+        updatePoints();
+    </script>
+</body>
+</html>

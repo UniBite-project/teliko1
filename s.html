@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniBite – Πίνακας Μάγειρα</title>
+    <link rel="stylesheet" href="s.css">
+</head>
+<body>
+
+    <div class="main-container">
+
+        <div class="panel form-panel">
+            <div class="panel-header">
+                <h2 class="panel-title" id="panelTitle">Δημιουργία / Επεξεργασία<br>Αγγελίας</h2>
+            </div>
+
+            <form id="listingForm" novalidate>
+                <div class="form-group">
+                    <label class="label" for="titleInput">Τίτλος <span class="required-star">*</span></label>
+                    <input type="text" id="titleInput" name="title" class="input" placeholder="π.χ. Μακαρόνια με κιμά" maxlength="150" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="label" id="uploadLabel">Φωτογραφία (προαιρετικά)</label>
+                    <div class="upload-box" id="uploadBox" role="button" tabindex="0" aria-labelledby="uploadLabel">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="17 8 12 3 7 8" />
+                            <line x1="12" y1="3" x2="12" y2="15" />
+                        </svg>
+                        <div class="upload-title">Μεταφόρτωση φωτογραφίας</div>
+                        <div class="upload-text">Κάνε drag &amp; drop ή πάτησε για επιλογή</div>
+                        <div class="upload-hint">PNG, JPG, GIF (max 5MB)</div>
+                    </div>
+                </div>
+
+                <div class="row-2">
+                    <div class="form-group">
+                        <label class="label" for="locationInput">Τοποθεσία παραλαβής <span class="required-star">*</span></label>
+                        <input type="text" id="locationInput" name="pickup_location" class="input" placeholder="π.χ. Φοιτητική Εστία, Δωμάτιο 12" maxlength="255" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label" id="portionsLabel">Ποσότητα (μερίδες) <span class="required-star">*</span></label>
+                        <div class="counter-container" role="group" aria-labelledby="portionsLabel">
+                            <span class="counter-value" id="counterValue" aria-live="polite">1</span>
+                            <div class="counter-btn-group">
+                                <button type="button" class="counter-btn" id="counterMinus" aria-label="Μείωση μερίδων">−</button>
+                                <button type="button" class="counter-btn" id="counterPlus" aria-label="Αύξηση μερίδων">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="label" for="timeInput">Ώρα παραλαβής <span class="required-star">*</span></label>
+                    <div class="time-container">
+                        <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <input type="time" id="timeInput" name="pickup_time" class="input input-with-icon" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="label" id="allergensLabel">Αλλεργιογόνα</label>
+                    <div class="allergens-grid" role="group" aria-labelledby="allergensLabel">
+                        <label class="allergen-item"><input type="checkbox" name="allergens" value="gluten"> Γλουτένη</label>
+                        <label class="allergen-item"><input type="checkbox" name="allergens" value="milk"> Γάλα</label>
+                        <label class="allergen-item"><input type="checkbox" name="allergens" value="eggs"> Αυγά</label>
+                        <label class="allergen-item"><input type="checkbox" name="allergens" value="fish"> Ψάρι</label>
+                        <label class="allergen-item"><input type="checkbox" name="allergens" value="peanuts"> Φιστίκια</label>
+                        <label class="allergen-item"><input type="checkbox" name="allergens" value="soybeans"> Σόγια</label>
+                        <label class="allergen-item"><input type="checkbox" name="allergens" value="tree-nuts"> Ξηροί Καρποί</label>
+                        <label class="allergen-item"><input type="checkbox" name="allergens" value="sesame"> Σουσάμι</label>
+                        <label class="allergen-item"><input type="checkbox" name="allergens" value="celery"> Σέλινο</label>
+                        <label class="allergen-item"><input type="checkbox" name="allergens" value="mustard"> Μουστάρδα</label>
+                        <label class="allergen-item"><input type="checkbox" name="allergens" value="sulfites"> Θειώδη</label>
+                        <label class="allergen-item"><input type="checkbox" name="allergens" value="lupin"> Λούπινο</label>
+                        <label class="allergen-item"><input type="checkbox" name="allergens" value="molluscs"> Μαλάκια</label>
+                        <label class="allergen-item"><input type="checkbox" name="allergens" value="crustaceans"> Οστρακοειδή</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="label" for="notesInput">Σημειώσεις (προαιρετικά)</label>
+                    <textarea id="notesInput" name="description" class="input" maxlength="1000" placeholder="π.χ. Σπιτικό φαγητό, μέτρια καυτερό..."></textarea>
+                </div>
+
+                <div class="action-buttons">
+                    <button type="submit" class="btn btn-save" id="saveBtn">Αποθήκευση</button>
+                    <button type="button" class="btn btn-clear" id="clearBtn">Καθαρισμός</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="panel listing-panel" id="listingPanel">
+            <div class="listing-header-row">
+                <h2 class="panel-title">Διαχείριση Αγγελιών</h2>
+                <div class="header-right">
+                    <span class="crud-badge">CRUD</span>
+                    <div class="counter-text" id="listingCounterText"><strong>0</strong> καταχωρήσεις</div>
+                </div>
+            </div>
+
+            <div class="panel-loading" id="listingsLoading">
+                <div class="spinner" aria-hidden="true"></div>
+                <span>Φόρτωση αγγελιών…</span>
+            </div>
+        </div>
+
+        <div class="panel requests-panel" id="requestsPanel">
+            <div class="requests-header">
+                <h2 class="panel-title">Αιτήματα Αγγελιών</h2>
+                <div class="requests-badge" id="requestsBadge">0</div>
+            </div>
+
+            <div class="requests-list" id="requestsList">
+                <div class="panel-loading">
+                    <div class="spinner" aria-hidden="true"></div>
+                    <span>Φόρτωση αιτημάτων…</span>
+                </div>
+            </div>
+
+            <a href="#" class="view-all-link" id="viewAllLink" style="display:none">Δες όλα τα αιτήματα →</a>
+        </div>
+
+    </div>
+
+<script src="s.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniBite</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="logo.jpeg" alt="UniBite Logo">
+    </div>
+    <div class="top-right">
+        <div class="lang-dropdown" id="langDropdown">
+            <div class="selected">
+                <span>Ελληνικά</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="options">
+                <div class="option" data-lang="el">Ελληνικά</div>
+                <div class="option" data-lang="en">English</div>
+            </div>
+        </div>
+        <a href="login.html" class="nav-active">Σύνδεση</a>
+        <a href="register.html" class="btn-outline">Εγγραφή </a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="login-card">
+        <h1>Καλώς ήρθες πίσω!</h1>
+        <p class="subtitle">Συνδέσου με τον ιδρυματικό σου λογαριασμό για να δεις τα διαθέσιμα γεύματα ή να διαχειριστείς τις αγγελίες σου. Μπες και εσύ στον μαγικό κόσμο του UniBite!</p>
+
+        <div class="section-title">Είσοδος ως</div>
+        <div class="role-selector" id="roleSelector">
+            <div class="role-btn active" data-role="student">Φοιτητής</div>
+            <div class="role-btn" data-role="admin">Διαχειριστής</div>
+        </div>
+
+        <form id="loginForm" novalidate>
+            <div class="input-group" id="usernameGroup">
+                <label for="username">Όνομα χρήστη</label>
+                <div class="input-wrapper" id="usernameWrapper">
+                    <i class="fa fa-user"></i>
+                    <input type="text" id="username" placeholder="π.χ. xristoskolias" required>
+                </div>
+            </div>
+
+            <div class="input-group" id="passwordGroup">
+                <label for="password">Συνθηματικό</label>
+                <div class="input-wrapper" id="passwordWrapper">
+                    <i class="fa fa-key"></i>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                    <i class="fa fa-eye toggle-pass" id="togglePassword"></i>
+                </div>
+            </div>
+
+            <a href="forgot.html" class="forgot-pass">Ξέχασες το συνθηματικό;</a>
+
+            <button type="submit" class="btn-primary" id="submitBtn">Σύνδεση</button>
+            <div class="error-message" id="errorMessage"></div>
+        </form>
+
+        <div class="register-link">
+            Δεν έχεις λογαριασμό; <a href="register.html">Δημιούργησε τώρα</a>
+        </div>
+    </div>
+</div>
+
+<script src="js/login.js"></script>
+
+</body>
+</html>
